@@ -18,14 +18,14 @@ import {
 import Button from '../components/Button'
 import Card from '../components/Card'
 import AdvisoryCard from '../components/AdvisoryCard'
-import { advisoryData, testimonialsData, cropsData } from '../data/dummyData'
+import { advisoryData, quickActionsData, testimonialsData, cropsData } from '../data/dummyData'
 
 // Icon mapping
 const iconMap = {
-  Camera: Camera,
-  MessageCircle: MessageCircle,
-  Store: Store,
-  Newspaper: Newspaper,
+  Camera,
+  MessageCircle,
+  Store,
+  Newspaper,
 }
 
 const LandingPage = () => {
