@@ -13,11 +13,20 @@ import {
   Phone,
   Mail,
   MapPin,
+  Newspaper,
 } from 'lucide-react'
 import Button from '../components/Button'
 import Card from '../components/Card'
 import AdvisoryCard from '../components/AdvisoryCard'
-import { advisoryData, quickActionsData, testimonialsData, cropsData } from '../data/dummyData'
+import { advisoryData, testimonialsData, cropsData } from '../data/dummyData'
+
+// Icon mapping
+const iconMap = {
+  Camera: Camera,
+  MessageCircle: MessageCircle,
+  Store: Store,
+  Newspaper: Newspaper,
+}
 
 const LandingPage = () => {
   const features = [
@@ -312,24 +321,27 @@ const LandingPage = () => {
               <Card className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h3>
                 <div className="space-y-3">
-                  {quickActionsData.map((action, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors"
-                    >
-                      <div className={`p-2 rounded-lg bg-${
-                        action.color === 'primary' ? 'primary' : action.color
-                      }-100`}>
-                        <action.icon className={`h-5 w-5 text-${
+                  {quickActionsData.map((action, index) => {
+                    const IconComponent = iconMap[action.icon] || Camera
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors"
+                      >
+                        <div className={`p-2 rounded-lg bg-${
                           action.color === 'primary' ? 'primary' : action.color
-                        }-600`} />
+                        }-100`}>
+                          <IconComponent className={`h-5 w-5 text-${
+                            action.color === 'primary' ? 'primary' : action.color
+                          }-600`} />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">{action.title}</p>
+                          <p className="text-xs text-gray-500">{action.description}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">{action.title}</p>
-                        <p className="text-xs text-gray-500">{action.description}</p>
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </Card>
             </div>

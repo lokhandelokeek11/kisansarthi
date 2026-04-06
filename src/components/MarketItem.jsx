@@ -1,14 +1,15 @@
 import React from 'react'
 import { TrendingUp, TrendingDown } from 'lucide-react'
 
-const MarketItem = ({ commodity, price, change, changePercent, unit = 'Quintal' }) => {
+const MarketItem = ({ commodity }) => {
+  const { name, price = 0, change = 0, changePercent = 0, unit = 'Quintal' } = commodity || {}
   const isPositive = change >= 0
 
   return (
     <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-100 hover:border-primary-200 hover:shadow-md transition-all duration-200 cursor-pointer group">
       <div className="flex-1">
         <h4 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-          {commodity}
+          {name}
         </h4>
         <p className="text-sm text-gray-500">{unit}</p>
       </div>

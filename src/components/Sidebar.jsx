@@ -29,7 +29,7 @@ const Sidebar = () => {
             <span className="text-primary-600 font-semibold text-lg">V</span>
           </div>
           <div>
-            <p className="font-semibold text-gray-900">Ved Sharma</p>
+            <p className="font-semibold text-gray-900">Aditya Thakur</p>
             <p className="text-sm text-gray-500">Farmer • Maharashtra</p>
           </div>
         </div>
@@ -39,7 +39,7 @@ const Sidebar = () => {
       <nav className="flex-1 p-4 space-y-2">
         {menuItems.map((item) => (
           <Link
-            key={item.path}
+            key={item.name}
             to={item.path}
             className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 ${
               isActive(item.path)

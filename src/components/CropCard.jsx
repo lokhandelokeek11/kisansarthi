@@ -2,9 +2,11 @@ import React from 'react'
 import { Leaf, FileText, Lightbulb } from 'lucide-react'
 import Card from './Card'
 
-const CropCard = ({ crop, image, health, plantedDate, expectedHarvest }) => {
+const CropCard = ({ crop }) => {
+  const { name, health = 'Good', plantedDate = 'N/A', expectedHarvest = 'N/A' } = crop || {}
+
   const getHealthColor = (health) => {
-    switch (health.toLowerCase()) {
+    switch (health?.toLowerCase()) {
       case 'excellent':
         return 'text-green-600 bg-green-50 border-green-200'
       case 'good':
@@ -19,7 +21,7 @@ const CropCard = ({ crop, image, health, plantedDate, expectedHarvest }) => {
   }
 
   const getHealthIcon = (health) => {
-    switch (health.toLowerCase()) {
+    switch (health?.toLowerCase()) {
       case 'excellent':
       case 'good':
         return '✅'
@@ -42,7 +44,7 @@ const CropCard = ({ crop, image, health, plantedDate, expectedHarvest }) => {
 
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-gray-900">{crop}</h3>
+          <h3 className="text-xl font-bold text-gray-900">{name}</h3>
           <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getHealthColor(health)}`}>
             {getHealthIcon(health)} {health}
           </span>

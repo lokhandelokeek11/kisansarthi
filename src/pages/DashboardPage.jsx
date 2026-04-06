@@ -42,7 +42,7 @@ const DashboardPage = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Namaste,</p>
-              <p className="text-lg font-bold text-gray-900">Ved Sharma!</p>
+              <p className="text-lg font-bold text-gray-900">Aditya Thakur</p>
             </div>
             <button className="relative p-2 rounded-lg hover:bg-gray-100">
               <Bell className="h-6 w-6 text-gray-700" />
@@ -56,7 +56,7 @@ const DashboardPage = () => {
           <div className="hidden lg:flex justify-between items-center mb-8">
             <div>
               <p className="text-gray-600">Namaste,</p>
-              <h1 className="text-3xl font-bold text-gray-900">Ved Sharma!</h1>
+              <h1 className="text-3xl font-bold text-gray-900">Aditya Thakur</h1>
             </div>
             <div className="flex items-center space-x-4">
               <button className="relative p-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
