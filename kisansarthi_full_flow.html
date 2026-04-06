@@ -1,0 +1,400 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);}
+.screen{display:none;padding:0;}
+.screen.active{display:block;}
+.phone{background:var(--color-background-secondary);border-radius:24px;padding:12px;max-width:390px;margin:1rem auto;}
+.pscreen{background:var(--color-background-primary);border-radius:16px;overflow:hidden;min-height:700px;}
+
+.topbar{padding:16px 20px 12px;border-bottom:0.5px solid var(--color-border-tertiary);}
+.topbar-logo{font-size:18px;font-weight:500;color:var(--color-text-primary);}
+.topbar-sub{font-size:12px;color:var(--color-text-secondary);margin-top:2px;}
+
+.lang-bar{display:flex;gap:6px;padding:10px 20px;border-bottom:0.5px solid var(--color-border-tertiary);}
+.lang-btn{font-size:11px;padding:4px 10px;border-radius:99px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);cursor:pointer;background:transparent;}
+.lang-btn.active{background:#E1F5EE;color:#085041;border-color:#5DCAA5;}
+
+.hero{padding:24px 20px 16px;text-align:center;}
+.hero-title{font-size:20px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px;}
+.hero-sub{font-size:13px;color:var(--color-text-secondary);line-height:1.6;}
+
+.persona-cards{padding:0 16px 20px;display:flex;flex-direction:column;gap:12px;}
+.pcard{border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);padding:18px 16px;cursor:pointer;background:var(--color-background-primary);transition:border-color 0.15s;}
+.pcard:hover{border-color:var(--color-border-secondary);}
+.pcard.teal-card{border-left:3px solid #1D9E75;}
+.pcard.amber-card{border-left:3px solid #EF9F27;}
+.pcard-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.pcard-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.pcard-icon-teal{background:#E1F5EE;}
+.pcard-icon-amber{background:#FAEEDA;}
+.pcard-title{font-size:15px;font-weight:500;color:var(--color-text-primary);}
+.pcard-subtitle{font-size:12px;color:var(--color-text-secondary);margin-top:2px;}
+.pcard-marathi{font-size:13px;color:var(--color-text-secondary);margin-bottom:10px;line-height:1.5;}
+.pcard-features{display:flex;flex-wrap:wrap;gap:5px;}
+.feat-pill{font-size:11px;padding:3px 8px;border-radius:99px;font-weight:500;}
+.feat-teal{background:#E1F5EE;color:#085041;}
+.feat-amber{background:#FAEEDA;color:#633806;}
+.pcard-cta{margin-top:12px;width:100%;padding:10px;border-radius:var(--border-radius-md);border:none;font-size:14px;font-weight:500;cursor:pointer;}
+.cta-teal{background:#1D9E75;color:#fff;}
+.cta-amber{background:#EF9F27;color:#412402;}
+
+.login-form{padding:20px;}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary);cursor:pointer;margin-bottom:16px;background:none;border:none;padding:0;}
+.login-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.login-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.login-title{font-size:17px;font-weight:500;color:var(--color-text-primary);}
+.login-role{font-size:12px;color:var(--color-text-secondary);margin-top:2px;}
+.form-group{margin-bottom:14px;}
+.form-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:5px;display:block;}
+.form-label span{font-size:11px;color:var(--color-text-tertiary);margin-left:4px;}
+.form-input{width:100%;padding:10px 12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:14px;background:var(--color-background-primary);color:var(--color-text-primary);}
+.form-input:focus{outline:none;border-color:#1D9E75;}
+.form-input.amber-focus:focus{border-color:#EF9F27;}
+.biz-type-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.biz-type-btn{padding:10px 8px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:12px;color:var(--color-text-secondary);cursor:pointer;text-align:center;background:var(--color-background-primary);}
+.biz-type-btn.selected-teal{border-color:#1D9E75;background:#E1F5EE;color:#085041;}
+.biz-type-btn.selected-amber{border-color:#EF9F27;background:#FAEEDA;color:#633806;}
+.submit-btn{width:100%;padding:12px;border-radius:var(--border-radius-md);border:none;font-size:15px;font-weight:500;cursor:pointer;margin-top:8px;}
+.submit-teal{background:#1D9E75;color:#fff;}
+.submit-amber{background:#EF9F27;color:#412402;}
+.login-footer{text-align:center;margin-top:12px;font-size:12px;color:var(--color-text-tertiary);}
+
+.dash-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--color-border-tertiary);}
+.dash-greeting{font-size:14px;font-weight:500;color:var(--color-text-primary);}
+.dash-role-badge{font-size:11px;padding:3px 10px;border-radius:99px;font-weight:500;}
+.dash-role-teal{background:#E1F5EE;color:#085041;}
+.dash-role-amber{background:#FAEEDA;color:#633806;}
+.dash-body{padding:14px 16px;}
+.dash-section-title{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+.metrics-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:16px;}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 8px;text-align:center;}
+.metric-icon{font-size:18px;margin-bottom:4px;}
+.metric-val{font-size:16px;font-weight:500;color:var(--color-text-primary);}
+.metric-lbl{font-size:10px;color:var(--color-text-secondary);margin-top:2px;line-height:1.3;}
+.listing-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:12px;}
+.listing-img{width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.listing-img-teal{background:#E1F5EE;}
+.listing-img-amber{background:#FAEEDA;}
+.listing-name{font-size:14px;font-weight:500;color:var(--color-text-primary);}
+.listing-detail{font-size:12px;color:var(--color-text-secondary);margin-top:2px;}
+.listing-right{margin-left:auto;text-align:right;}
+.listing-price{font-size:14px;font-weight:500;}
+.listing-price-teal{color:#0F6E56;}
+.listing-price-amber{color:#854F0B;}
+.verified-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 7px;border-radius:99px;background:#E1F5EE;color:#085041;margin-top:3px;}
+.call-btn{display:flex;align-items:center;gap:4px;font-size:11px;padding:5px 10px;border-radius:99px;border:none;cursor:pointer;margin-top:4px;}
+.call-btn-blue{background:#E6F1FB;color:#185FA5;}
+.waste-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;margin-bottom:8px;}
+.waste-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;}
+.waste-sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:8px;}
+.waste-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.waste-tag{font-size:11px;padding:3px 8px;border-radius:99px;}
+.waste-green{background:#EAF3DE;color:#27500A;}
+.waste-amber{background:#FAEEDA;color:#633806;}
+.waste-purple{background:#EEEDFE;color:#3C3489;}
+.alert-bar{background:#FCEBEB;border-radius:var(--border-radius-md);padding:8px 12px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.alert-icon{font-size:14px;}
+.alert-text{font-size:12px;color:#791F1F;}
+.nav-bar{display:flex;border-top:0.5px solid var(--color-border-tertiary);padding:8px 0 4px;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;}
+.nav-icon{font-size:18px;}
+.nav-lbl{font-size:10px;color:var(--color-text-tertiary);}
+.nav-lbl.active-teal{color:#0F6E56;font-weight:500;}
+.nav-lbl.active-amber{color:#854F0B;font-weight:500;}
+.section-divider{height:0.5px;background:var(--color-border-tertiary);margin:14px 0;}
+.price-update-card{background:#E1F5EE;border-radius:var(--border-radius-md);padding:10px 12px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
+.price-update-left{font-size:12px;color:#085041;}
+.price-update-right{font-size:13px;font-weight:500;color:#085041;}
+.amber-update-card{background:#FAEEDA;}
+.amber-update-left{color:#633806;}
+.amber-update-right{color:#633806;}
+</style>
+
+<div class="phone">
+  <div class="pscreen">
+
+    <div id="s-landing" class="screen active">
+      <div class="topbar">
+        <div class="topbar-logo">🌱 KisanSarthi</div>
+        <div class="topbar-sub">किसानसारथी · B2B Agricultural Platform</div>
+      </div>
+      <div class="lang-bar">
+        <button class="lang-btn active">मराठी</button>
+        <button class="lang-btn">हिंदी</button>
+        <button class="lang-btn">English</button>
+      </div>
+      <div class="hero">
+        <div class="hero-title">तुम्ही कोण आहात?<br><span style="font-size:15px;color:var(--color-text-secondary);">Who are you?</span></div>
+        <div class="hero-sub" style="margin-top:6px;">Select your seller type to continue<br>तुमचा विक्रेता प्रकार निवडा</div>
+      </div>
+      <div class="persona-cards">
+        <div class="pcard teal-card" onclick="goTo('s-fv-login')">
+          <div class="pcard-header">
+            <div class="pcard-icon pcard-icon-teal">🥦</div>
+            <div>
+              <div class="pcard-title">Fruit & Vegetable Seller</div>
+              <div class="pcard-subtitle">फळे आणि भाजीपाला विक्रेता</div>
+            </div>
+          </div>
+          <div class="pcard-marathi">रस्ता विक्रेता · बाजार विक्रेता · घाऊक विक्रेता<br><span style="font-size:12px;color:var(--color-text-tertiary);">Street · Market · Wholesale seller</span></div>
+          <div class="pcard-features">
+            <span class="feat-pill feat-teal">Daily price updates</span>
+            <span class="feat-pill feat-teal">Buyer connect</span>
+            <span class="feat-pill feat-teal">Waste management</span>
+            <span class="feat-pill feat-teal">UPI + Cash</span>
+          </div>
+          <button class="pcard-cta cta-teal" style="margin-top:14px;">Login / Register →</button>
+        </div>
+
+        <div class="pcard amber-card" onclick="goTo('s-pest-login')">
+          <div class="pcard-header">
+            <div class="pcard-icon pcard-icon-amber">🌾</div>
+            <div>
+              <div class="pcard-title">Fertiliser & Pesticide Seller</div>
+              <div class="pcard-subtitle">खत आणि कीटकनाशक विक्रेता</div>
+            </div>
+          </div>
+          <div class="pcard-marathi">किरकोळ कृषी दुकान · वितरक · उत्पादक<br><span style="font-size:12px;color:var(--color-text-tertiary);">Retail agro shop · Distributor · Manufacturer</span></div>
+          <div class="pcard-features">
+            <span class="feat-pill feat-amber">Product catalogue</span>
+            <span class="feat-pill feat-amber">Dealer connect</span>
+            <span class="feat-pill feat-amber">Bulk pricing</span>
+            <span class="feat-pill feat-amber">Order tracking</span>
+          </div>
+          <button class="pcard-cta cta-amber" style="margin-top:14px;">Login / Register →</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="s-fv-login" class="screen">
+      <div class="login-form">
+        <button class="back-btn" onclick="goTo('s-landing')">← Back / मागे</button>
+        <div class="login-header">
+          <div class="login-icon pcard-icon-teal">🥦</div>
+          <div>
+            <div class="login-title">Fruit & Vegetable Seller</div>
+            <div class="login-role">फळे आणि भाजीपाला विक्रेता</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mobile number · मोबाईल क्रमांक <span>(required)</span></label>
+          <input class="form-input" type="tel" placeholder="9876543210" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Full name · पूर्ण नाव</label>
+          <input class="form-input" placeholder="Ashvin Jaiswal" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Shop / Business name · दुकानाचे नाव <span>(optional)</span></label>
+          <input class="form-input" placeholder="Prabhu Fruit Shop" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Business type · व्यवसायाचा प्रकार</label>
+          <div class="biz-type-row">
+            <div class="biz-type-btn selected-teal" onclick="selectBiz(this,'teal')">🛣️ Street vendor<br><span style="font-size:10px;">पथारीवाला</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'teal')">🏪 Shop / Stall<br><span style="font-size:10px;">दुकान / स्टॉल</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'teal')">🏬 Market seller<br><span style="font-size:10px;">बाजार विक्रेता</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'teal')">📦 Wholesale<br><span style="font-size:10px;">घाऊक विक्रेता</span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">What do you sell · तुम्ही काय विकता?</label>
+          <div class="biz-type-row">
+            <div class="biz-type-btn selected-teal" onclick="selectBiz(this,'teal')">🍎 Fruits<br><span style="font-size:10px;">फळे</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'teal')">🥬 Vegetables<br><span style="font-size:10px;">भाज्या</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'teal')">🍅 Both<br><span style="font-size:10px;">दोन्ही</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'teal')">💐 Flowers<br><span style="font-size:10px;">फुले</span></div>
+          </div>
+        </div>
+        <button class="submit-btn submit-teal" onclick="goTo('s-fv-dash')">Login / नोंदणी करा →</button>
+        <div class="login-footer">No password needed · OTP वर लॉगिन करा</div>
+      </div>
+    </div>
+
+    <div id="s-pest-login" class="screen">
+      <div class="login-form">
+        <button class="back-btn" onclick="goTo('s-landing')">← Back / मागे</button>
+        <div class="login-header">
+          <div class="login-icon pcard-icon-amber">🌾</div>
+          <div>
+            <div class="login-title">Fertiliser & Pesticide Seller</div>
+            <div class="login-role">खत आणि कीटकनाशक विक्रेता</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mobile number · मोबाईल क्रमांक <span>(required)</span></label>
+          <input class="form-input amber-focus" type="tel" placeholder="9876543210" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Full name · पूर्ण नाव</label>
+          <input class="form-input amber-focus" placeholder="Santoshkumar Pawar" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Organisation / Shop · संस्था / दुकान</label>
+          <input class="form-input amber-focus" placeholder="Nrusinha Krushisuvidha Kendra" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your role · तुमची भूमिका</label>
+          <div class="biz-type-row">
+            <div class="biz-type-btn" onclick="selectBiz(this,'amber')">🏪 Retail agro<br><span style="font-size:10px;">किरकोळ दुकान</span></div>
+            <div class="biz-type-btn selected-amber" onclick="selectBiz(this,'amber')">🚚 Distributor<br><span style="font-size:10px;">वितरक</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'amber')">🏭 Manufacturer<br><span style="font-size:10px;">उत्पादक</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'amber')">🤝 FPO<br><span style="font-size:10px;">एफपीओ</span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Products you sell · उत्पादने</label>
+          <div class="biz-type-row">
+            <div class="biz-type-btn selected-amber" onclick="selectBiz(this,'amber')">🧪 Chemical fert.<br><span style="font-size:10px;">रासायनिक खते</span></div>
+            <div class="biz-type-btn selected-amber" onclick="selectBiz(this,'amber')">🌿 Organic fert.<br><span style="font-size:10px;">सेंद्रिय खते</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'amber')">🐛 Pesticides<br><span style="font-size:10px;">कीटकनाशके</span></div>
+            <div class="biz-type-btn" onclick="selectBiz(this,'amber')">🔬 Bio-products<br><span style="font-size:10px;">जैविक उत्पादने</span></div>
+          </div>
+        </div>
+        <button class="submit-btn submit-amber" onclick="goTo('s-pest-dash')">Login / नोंदणी करा →</button>
+        <div class="login-footer">No password needed · OTP वर लॉगिन करा</div>
+      </div>
+    </div>
+
+    <div id="s-fv-dash" class="screen">
+      <div class="dash-header">
+        <div>
+          <div class="dash-greeting">नमस्ते, Ashvin 👋</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">Prabhu Fruit Shop · Pune</div>
+        </div>
+        <span class="dash-role-badge dash-role-teal">🥦 F&V Seller</span>
+      </div>
+      <div class="dash-body">
+        <div class="price-update-card">
+          <div class="price-update-left">📈 आजचे बाजारभाव · Today's rates</div>
+          <div class="price-update-right">Updated 6 AM</div>
+        </div>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-icon">💰</div><div class="metric-val" style="color:#0F6E56;">₹18/kg</div><div class="metric-lbl">Tomato avg rate</div></div>
+          <div class="metric"><div class="metric-icon">👥</div><div class="metric-val">7</div><div class="metric-lbl">Nearby buyers</div></div>
+          <div class="metric"><div class="metric-icon">♻️</div><div class="metric-val" style="color:#E24B4A;">4</div><div class="metric-lbl">Waste collectors</div></div>
+        </div>
+        <div class="dash-section-title">Nearby buyers · जवळचे खरेदीदार</div>
+        <div class="listing-card">
+          <div class="listing-img listing-img-teal">🏨</div>
+          <div>
+            <div class="listing-name">Hotel Sawarkar</div>
+            <div class="listing-detail">📍 1.2 km · Kothrud, Pune</div>
+            <div class="verified-badge">✓ Verified</div>
+          </div>
+          <div class="listing-right">
+            <div class="listing-price listing-price-teal">₹20/kg</div>
+            <button class="call-btn call-btn-blue">📞 Call</button>
+          </div>
+        </div>
+        <div class="listing-card">
+          <div class="listing-img listing-img-teal">🏪</div>
+          <div>
+            <div class="listing-name">Vijay General Store</div>
+            <div class="listing-detail">📍 0.8 km · Deccan</div>
+            <div class="verified-badge">✓ Verified</div>
+          </div>
+          <div class="listing-right">
+            <div class="listing-price listing-price-teal">Market rate</div>
+            <button class="call-btn call-btn-blue">📞 Call</button>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+        <div class="dash-section-title">Waste connect · कचरा जोडणी</div>
+        <div class="waste-card">
+          <div class="waste-title">♻️ Post today's waste · आजचा कचरा पोस्ट करा</div>
+          <div class="waste-sub">40% of sellers waste 10+ kg daily. Connect with collectors near you.</div>
+          <div class="waste-tags">
+            <span class="waste-tag waste-green">🌱 Compost makers (80%)</span>
+            <span class="waste-tag waste-amber">🐄 Animal feed (70%)</span>
+            <span class="waste-tag waste-purple">🤲 NGOs (40%)</span>
+          </div>
+          <button style="margin-top:10px;width:100%;padding:9px;border-radius:var(--border-radius-md);border:none;background:#1D9E75;color:#fff;font-size:13px;font-weight:500;cursor:pointer;">Connect with collector →</button>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon">🏠</div><div class="nav-lbl active-teal">Home</div></div>
+        <div class="nav-item"><div class="nav-icon">🔍</div><div class="nav-lbl">Find buyers</div></div>
+        <div class="nav-item"><div class="nav-icon">♻️</div><div class="nav-lbl">Waste</div></div>
+        <div class="nav-item"><div class="nav-icon">👤</div><div class="nav-lbl">Profile</div></div>
+      </div>
+    </div>
+
+    <div id="s-pest-dash" class="screen">
+      <div class="dash-header">
+        <div>
+          <div class="dash-greeting">नमस्ते, Santosh 👋</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">Nrusinha Krushisuvidha · Distributor</div>
+        </div>
+        <span class="dash-role-badge dash-role-amber">🌾 Agro Seller</span>
+      </div>
+      <div class="dash-body">
+        <div class="alert-bar">
+          <span class="alert-icon">⚠️</span>
+          <span class="alert-text">2 payments delayed · 2 पेमेंट विलंबित आहेत — 60% face this issue</span>
+        </div>
+        <div class="price-update-card amber-update-card">
+          <div class="price-update-left amber-update-left">📦 Bulk orders pending · प्रलंबित ऑर्डर</div>
+          <div class="price-update-right amber-update-right">3 new</div>
+        </div>
+        <div class="metrics-row">
+          <div class="metric"><div class="metric-icon">🤝</div><div class="metric-val">12</div><div class="metric-lbl">Connected dealers</div></div>
+          <div class="metric"><div class="metric-icon">📦</div><div class="metric-val" style="color:#854F0B;">3</div><div class="metric-lbl">Pending orders</div></div>
+          <div class="metric"><div class="metric-icon">✅</div><div class="metric-val" style="color:#0F6E56;">8</div><div class="metric-lbl">Verified buyers</div></div>
+        </div>
+        <div class="dash-section-title">My catalogue · माझा कॅटलॉग</div>
+        <div class="listing-card">
+          <div class="listing-img listing-img-amber">🌿</div>
+          <div>
+            <div class="listing-name">Organic NPK Fertiliser</div>
+            <div class="listing-detail">Crops: Wheat, Rice, Vegetables</div>
+            <div class="verified-badge" style="background:#FAEEDA;color:#633806;">✓ Authorized seller</div>
+          </div>
+          <div class="listing-right">
+            <div class="listing-price listing-price-amber">₹850/bag</div>
+            <button class="call-btn" style="background:#FAEEDA;color:#633806;border:none;font-size:11px;padding:5px 10px;border-radius:99px;cursor:pointer;margin-top:4px;">📋 Details</button>
+          </div>
+        </div>
+        <div class="listing-card">
+          <div class="listing-img listing-img-amber">🐛</div>
+          <div>
+            <div class="listing-name">Bio Pesticide (5L)</div>
+            <div class="listing-detail">⚠️ Dosage: 10ml/litre water</div>
+            <div class="verified-badge" style="background:#FAEEDA;color:#633806;">✓ Authorized seller</div>
+          </div>
+          <div class="listing-right">
+            <div class="listing-price listing-price-amber">₹1,200</div>
+            <button class="call-btn" style="background:#FAEEDA;color:#633806;border:none;font-size:11px;padding:5px 10px;border-radius:99px;cursor:pointer;margin-top:4px;">📋 Details</button>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+        <div class="dash-section-title">Connect with retailers · किरकोळ विक्रेत्यांशी जोडा</div>
+        <div class="listing-card">
+          <div class="listing-img listing-img-amber">🏪</div>
+          <div>
+            <div class="listing-name">Radhe Agro Shop</div>
+            <div class="listing-detail">📍 2.1 km · Nashik Road</div>
+            <div class="verified-badge" style="background:#FAEEDA;color:#633806;">★★★★☆ Rated</div>
+          </div>
+          <div class="listing-right">
+            <div style="font-size:11px;color:var(--color-text-secondary);">Min 10 units</div>
+            <button class="call-btn call-btn-blue">📞 Call</button>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon">🏠</div><div class="nav-lbl active-amber">Home</div></div>
+        <div class="nav-item"><div class="nav-icon">📦</div><div class="nav-lbl">Catalogue</div></div>
+        <div class="nav-item"><div class="nav-icon">🤝</div><div class="nav-lbl">Dealers</div></div>
+        <div class="nav-item"><div class="nav-icon">👤</div><div class="nav-lbl">Profile</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function selectBiz(el,type){const parent=el.closest('.biz-type-row');parent.querySelectorAll('.biz-type-btn').forEach(b=>{b.classList.remove('selected-teal','selected-amber');});el.classList.add('selected-'+type);}
+</script>
