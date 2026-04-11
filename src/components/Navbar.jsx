@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Phone, Globe, Sun, Moon } from 'lucide-react'
+import { Menu, X, Globe, Sun, Moon } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showLangDropdown, setShowLangDropdown] = useState(false)
   const location = useLocation()
+  const { t, language, changeLanguage, availableLanguages } = useLanguage()
+
   const isDashboard = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/advisory') || location.pathname.startsWith('/market')
 
   const handleNavClick = (e, path) => {
@@ -19,14 +23,14 @@ const Navbar = () => {
   }
 
   const navLinks = isDashboard ? [
-    { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Advisory', path: '/advisory' },
-    { name: 'Market', path: '/market' },
+    { name: t('nav.dashboard'), path: '/dashboard' },
+    { name: t('nav.advisory'), path: '/advisory' },
+    { name: t('nav.market'), path: '/market' },
   ] : [
-    { name: 'Home', path: '/' },
-    { name: 'Features', path: '#features' },
-    { name: 'How it Works', path: '#how-it-works' },
-    { name: 'Contact', path: '#contact' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.features'), path: '#features' },
+    { name: t('nav.howItWorks'), path: '#how-it-works' },
+    { name: t('nav.contact'), path: '#contact' },
   ]
 
   const isActiveLink = (path) => {
@@ -68,26 +72,57 @@ const Navbar = () => {
 
           {/* Right Side */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* Language Switcher */}
+            <div className="relative">
+              <button
+                onClick={() => setShowLangDropdown(!showLangDropdown)}
+                className="flex items-center space-x-1 px-3 py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+              >
+                <Globe className="h-4 w-4 text-gray-500" />
+                <span className="text-gray-700">{availableLanguages.find(l => l.code === language)?.native}</span>
+              </button>
+
+              {showLangDropdown && (
+                <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                  {availableLanguages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        changeLanguage(lang.code)
+                        setShowLangDropdown(false)
+                      }}
+                      className={`w-full px-4 py-2 text-left text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg ${
+                        language === lang.code ? 'bg-primary-50 text-primary-600' : 'text-gray-700'
+                      }`}
+                    >
+                      {lang.native}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {!isDashboard ? (
               <>
-                <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-                <Globe className="h-5 w-5 text-gray-600" />
-              </button>
-              <Link to="/login">
-                <Button variant="outline" size="sm">Login</Button>
-              </Link>
-              <Link to="/login">
-                <Button size="sm">Get Started</Button>
-              </Link>
+                <Link to="/login">
+                  <Button variant="outline" size="sm">{t('nav.login')}</Button>
+                </Link>
+                <Link to="/login">
+                  <Button size="sm">{t('nav.getStarted')}</Button>
+                </Link>
               </>
             ) : (
               <>
                 <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
                   <Sun className="h-5 w-5 text-gray-600" />
                 </button>
-                <Link to="/login">
-                  <Button variant="outline" size="sm">Logout</Button>
-                </Link>
+                <button onClick={() => {
+                  localStorage.removeItem('sellerType')
+                  localStorage.removeItem('sellerData')
+                  window.location.href = '/login'
+                }}>
+                  <Button variant="outline" size="sm">{t('nav.logout')}</Button>
+                </button>
               </>
             )}
           </div>
@@ -116,14 +151,14 @@ const Navbar = () => {
                   handleNavClick(e, link.path)
                   setIsMenuOpen(false)
                 }}
-                className="block py-3 text-base font-medium text-gray-700 hover:text-primary-600"
+                className="block py-3 text-base font-medium text-gray-700 hover:text-primary-600 px-4"
               >
                 {link.name}
               </Link>
             ))}
-            <div className="mt-4 space-y-3">
-              <Button variant="outline" fullWidth>Login</Button>
-              <Button fullWidth>Get Started</Button>
+            <div className="mt-4 px-4 space-y-3">
+              <Button variant="outline" fullWidth>{t('nav.login')}</Button>
+              <Button fullWidth>{t('nav.getStarted')}</Button>
             </div>
           </div>
         )}

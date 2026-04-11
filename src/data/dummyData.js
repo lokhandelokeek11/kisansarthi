@@ -1,188 +1,305 @@
-// Dummy data for the KisanSarthi application
+export const buyers = [
+  {
+    id: 1,
+    name: "Green Garden Hotels",
+    type: "Hotel / Restaurant",
+    distance: "2.5 km",
+    priceOffered: "₹45/kg",
+    rating: 4.8,
+    verified: true,
+    recentlyActive: true,
+    highDemand: true,
+    category: "Bulk Buyer"
+  },
+  {
+    id: 2,
+    name: "FreshMart Retail",
+    type: "Supermarket",
+    distance: "5.0 km",
+    priceOffered: "₹42/kg",
+    rating: 4.5,
+    verified: true,
+    recentlyActive: true,
+    highDemand: false,
+    category: "Retail"
+  },
+  {
+    id: 3,
+    name: "Annapurna Canteen",
+    type: "Bulk Buyer",
+    distance: "1.2 km",
+    priceOffered: "₹38/kg",
+    rating: 4.2,
+    verified: false,
+    recentlyActive: false,
+    highDemand: true,
+    category: "Bulk Buyer"
+  },
+  {
+    id: 4,
+    name: "Organic Bites",
+    type: "Shop",
+    distance: "3.8 km",
+    priceOffered: "₹50/kg",
+    rating: 4.9,
+    verified: true,
+    recentlyActive: true,
+    highDemand: false,
+    category: "Specialty"
+  }
+];
 
-export const weatherData = {
-  location: 'Pune, Maharashtra',
-  temperature: 28,
-  condition: 'Partly Cloudy',
-  humidity: 65,
-  wind: 12,
-  rainChance: 20,
-}
+export const marketTrends = [
+  { day: 'Mon', price: 32 },
+  { day: 'Tue', price: 35 },
+  { day: 'Wed', price: 34 },
+  { day: 'Thu', price: 38 },
+  { day: 'Fri', price: 40 },
+  { day: 'Sat', price: 39 },
+  { day: 'Sun', price: 42 },
+];
+
+export const commodities = [
+  { id: 1, name: 'Tomato', price: 42, change: 5.4, status: 'up' },
+  { id: 2, name: 'Onion', price: 28, change: -2.1, status: 'down' },
+  { id: 3, name: 'Potato', price: 18, change: 0.5, status: 'up' },
+  { id: 4, name: 'Green Chili', price: 65, change: 12.3, status: 'up' },
+  { id: 5, name: 'Cauliflower', price: 35, change: -1.2, status: 'down' },
+];
+
+export const wasteCollectors = [
+  {
+    id: 1,
+    name: "BioEnergy NGO",
+    type: "Compost Maker",
+    distance: "3.2 km",
+    rating: 4.7,
+    specialty: "Animal Feed",
+    verified: true
+  },
+  {
+    id: 2,
+    name: "Krishi Organic Farm",
+    type: "Farm",
+    distance: "5.5 km",
+    rating: 4.5,
+    specialty: "Vermicompost",
+    verified: true
+  },
+  {
+    id: 3,
+    name: "Happy Paws Shelter",
+    type: "Animal Shelter",
+    distance: "1.8 km",
+    rating: 4.9,
+    specialty: "Animal Feed",
+    verified: false
+  }
+];
+
+export const advisoryData = [
+  {
+    id: 1,
+    title: 'Managing Wheat Rust',
+    description: 'Learn how to identify and treat common wheat diseases.',
+    category: 'Crop Management',
+    date: '2024-03-20',
+    readTime: '5 min'
+  },
+  {
+    id: 2,
+    title: 'Organic Fertilizer Guide',
+    description: 'Best practices for sustainable soil health using organic matter.',
+    category: 'Sustainable Farming',
+    date: '2024-03-18',
+    readTime: '8 min'
+  },
+  {
+    id: 3,
+    title: 'Post-Harvest Handling',
+    description: 'Maximize your profits by reducing post-harvest losses.',
+    category: 'Market Insights',
+    date: '2024-03-15',
+    readTime: '6 min'
+  }
+];
+
+export const quickActionsData = [
+  {
+    icon: 'Camera',
+    title: 'Crop Scan',
+    description: 'Scan disease',
+    color: 'emerald'
+  },
+  {
+    icon: 'MessageCircle',
+    title: 'Expert Appt',
+    description: 'Talk to expert',
+    color: 'blue'
+  },
+  {
+    icon: 'Newspaper',
+    title: 'Daily News',
+    description: 'Agri updates',
+    color: 'amber'
+  }
+];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    name: 'Suresh Patil',
+    location: 'Pune, Maharashtra',
+    text: 'KisanSarthi helped me increase my yields by 30%! The expert advice is invaluable.'
+  },
+  {
+    id: 2,
+    name: 'Anita Devi',
+    location: 'Karnal, Haryana',
+    text: 'Market rates feature helped me sell my produce at the best prices this season.'
+  },
+  {
+    id: 3,
+    name: 'Ramesh Singh',
+    location: 'Patna, Bihar',
+    text: 'Crop scan feature saved my tomato crop from early blight. Highly recommend!'
+  }
+];
 
 export const cropsData = [
   {
     id: 1,
     name: 'Wheat',
-    health: 'Excellent',
     plantedDate: '15 Nov 2023',
-    expectedHarvest: '15 Mar 2024',
-    image: null,
+    health: 'Excellent',
+    status: 'Ready'
   },
   {
     id: 2,
-    name: 'Rice',
+    name: 'Maize',
+    plantedDate: '10 Dec 2023',
     health: 'Good',
-    plantedDate: '01 Dec 2023',
-    expectedHarvest: '31 Mar 2024',
-    image: null,
-  },
-  {
-    id: 3,
-    name: 'Cotton',
-    health: 'Fair',
-    plantedDate: '20 Jan 2024',
-    expectedHarvest: '01 Jun 2024',
-    image: null,
-  },
-]
+    status: 'Growing'
+  }
+];
 
 export const marketData = {
-  mandi: 'Pune Agricultural Market ( Laudha )',
+  mandi: 'Pune Agricultural Market (Laudha)',
   commodities: [
-    {
-      id: 1,
-      name: 'Wheat',
-      price: 2200,
-      change: 50,
-      changePercent: 2.3,
-    },
-    {
-      id: 2,
-      name: 'Rice (Basmati)',
-      price: 3500,
-      change: -120,
-      changePercent: -3.3,
-    },
-    {
-      id: 3,
-      name: 'Cotton',
-      price: 6500,
-      change: 200,
-      changePercent: 3.2,
-    },
-    {
-      id: 4,
-      name: 'Soybean',
-      price: 4800,
-      change: 0,
-      changePercent: 0,
-    },
-    {
-      id: 5,
-      name: 'Maize',
-      price: 1900,
-      change: 80,
-      changePercent: 4.4,
-    },
-    {
-      id: 6,
-      name: 'Groundnut',
-      price: 5500,
-      change: -150,
-      changePercent: -2.7,
-    },
+    { id: 1, name: 'Wheat', price: 2200, change: 50, changePercent: 2.3 },
+    { id: 2, name: 'Maize', price: 1950, change: 80, changePercent: 4.4 },
+    { id: 3, name: 'Cotton', price: 6500, change: -150, changePercent: -2.2 },
+    { id: 4, name: 'Tomato', price: 1800, change: 200, changePercent: 12.5 },
   ],
-}
+};
 
-export const advisoryData = [
+
+export const agroCatalogue = [
   {
     id: 1,
-    title: 'Best Practices for Wheat Crop This Season',
-    description: 'Learn about the optimal sowing time, fertilizer schedule, and pest management strategies for wheat cultivation in winter season.',
-    category: 'Crop Management',
-    date: '5 days ago',
-    readTime: 5,
+    name: "Premium Wheat Seeds",
+    category: "Seeds",
+    brand: "KisanBrand",
+    price: "₹1,200",
+    unit: "50kg Bag",
+    stock: 45,
+    rating: 4.8,
+    image: "/images/wheat_seeds.png"
   },
   {
     id: 2,
-    title: 'Understanding Weather Patterns for Better Yield',
-    description: 'How to interpret weather forecasts and make informed decisions about irrigation and harvesting.',
-    category: 'Weather',
-    date: '1 week ago',
-    readTime: 8,
+    name: "Organic Nitrogen Boost",
+    category: "Fertilizers",
+    brand: "GreenLeaf",
+    price: "₹850",
+    unit: "25kg Bag",
+    stock: 120,
+    rating: 4.5,
+    image: "/images/nitrogen_boost.png"
   },
   {
     id: 3,
-    title: 'Organic Farming Techniques for Small Farmers',
-    description: 'Step-by-step guide to transitioning to organic farming with minimal investment.',
-    category: 'Sustainable Farming',
-    date: '2 weeks ago',
-    readTime: 12,
+    name: "Neem Oil Pesticide",
+    category: "Pesticides",
+    brand: "NatureGuard",
+    price: "₹450",
+    unit: "1L Bottle",
+    stock: 85,
+    rating: 4.9,
+    image: "/images/neem_oil.png"
   },
   {
     id: 4,
-    title: 'Market Analysis: Cotton Prices Expected to Rise',
-    description: 'Recent market trends indicate a potential increase in cotton prices. Here is what farmers should know.',
-    category: 'Market Insights',
-    date: '3 days ago',
-    readTime: 6,
-  },
-  {
-    id: 5,
-    title: 'Government Schemes for Small and Marginal Farmers',
-    description: 'Complete list of subsidies, loans, and support programs available for 2024.',
-    category: 'Policies',
-    date: '1 month ago',
-    readTime: 10,
-  },
-  {
-    id: 6,
-    title: 'Water Conservation Techniques for Dry Areas',
-    description: 'Modern irrigation methods and water-saving practices for drought-prone regions.',
-    category: 'Irrigation',
-    date: '2 days ago',
-    readTime: 7,
-  },
-]
+    name: "Hybrid Tomato Seeds",
+    category: "Seeds",
+    brand: "VeggieGrow",
+    price: "₹250",
+    unit: "500g Pouch",
+    stock: 200,
+    rating: 4.7,
+    image: "/images/tomato_seeds.png"
+  }
+];
 
-export const quickActionsData = [
+export const agroDealers = [
   {
     id: 1,
-    title: 'Crop Scan',
-    description: 'AI-powered crop disease detection',
-    icon: 'Camera',
-    color: 'primary',
+    name: "Mahindra Agri Solutions",
+    contact: "98765 43210",
+    location: "Pune Industrial Area",
+    type: "Distributor",
+    ordersCount: 45,
+    status: "Active",
+    rating: 4.8
   },
   {
     id: 2,
-    title: 'Expert Chat',
-    description: 'Connect with agriculture experts',
-    icon: 'MessageCircle',
-    color: 'blue',
+    name: "Krishi Traders",
+    contact: "98765 43211",
+    location: "Nashik Mandi",
+    type: "Wholesaler",
+    ordersCount: 22,
+    status: "Active",
+    rating: 4.5
   },
   {
     id: 3,
-    title: 'Agri Store',
-    description: 'Buy seeds, tools & fertilizers',
-    icon: 'Store',
-    color: 'green',
-  },
-  {
-    id: 4,
-    title: 'News',
-    description: 'Latest agriculture updates',
-    icon: 'Newspaper',
-    color: 'yellow',
-  },
-]
+    name: "Bharat Seeds Agency",
+    contact: "98765 43212",
+    location: "Nagpur Main Road",
+    type: "Retailer",
+    ordersCount: 15,
+    status: "Pending",
+    rating: 4.2
+  }
+];
 
-export const testimonialsData = [
+export const agroOrders = [
   {
-    id: 1,
-    name: 'Ramesh Kumar',
-    location: 'Punjab',
-    text: 'KisanSarthi helped me increase my wheat yield by 30% through personalized advisory.',
+    id: "ORD-8821",
+    customer: "Suresh Patil",
+    date: "2024-03-22",
+    items: "Premium Wheat Seeds x 2",
+    amount: "₹2,400",
+    status: "Delivered",
+    payment: "Paid"
   },
   {
-    id: 2,
-    name: 'Suresh Patil',
-    location: 'Maharashtra',
-    text: 'The market price feature ensures I get the best price for my produce. Highly recommended!',
+    id: "ORD-8822",
+    customer: "Mahindra Agri Solutions",
+    date: "2024-03-21",
+    items: "Organic Nitrogen Boost x 10",
+    amount: "₹8,500",
+    status: "Processing",
+    payment: "Pending"
   },
   {
-    id: 3,
-    name: 'Venkatesh Reddy',
-    location: 'Karnataka',
-    text: 'Crop scan feature detected disease early and saved my entire crop. Amazing technology!',
-  },
-]
+    id: "ORD-8823",
+    customer: "Anita Devi",
+    date: "2024-03-20",
+    items: "Neem Oil Pesticide x 5",
+    amount: "₹2,250",
+    status: "Shipped",
+    payment: "Paid"
+  }
+];
